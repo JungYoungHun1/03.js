@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let scope1 = 10;
+        {
+            let scope1 = 20;
+            console.log(scope1);
+        }
+        console.log(scope1);
+
+        let scope2 = 30;
+        {
+            console.log(scope2);
+        }
+        {
+            let scope3 = 40;
+        }
+        // console.log(scope3);
+
+        var cope1 = 10;
+        {
+            var cope1 = 20;
+            console.log(cope1);
+        }
+        console.log(cope1);
+
+        var cope2 = 30;
+        {
+            console.log(cope2);
+        }
+        {
+            var cope3 = 40;
+        }
+        console.log(cope3);
+
+        var scopeVar2 = 60;
+        console.log(scopeVar2);
+        (function(){
+            scopeVar2++;
+            console.log(scopeVar2);
+        })();
+        console.log(scopeVar2);
+        
+        // console.log(scopeVar3);
+
+        // hoisting
+        console.log(hoist);
+        var hoist = 'hoist(var)';
+
+        let hoistLet = 'hoist';
+        console.log(hoistLet);
+
+        function print1(){
+            console.log('print1');
+        }
+        print1();
+
+    </script>
+</body>
+</html>

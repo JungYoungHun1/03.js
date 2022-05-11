@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    let obj1 = {};
+    console.log(obj1)
+    console.log(typeof(obj1));
+    obj1.id = 2;
+    obj1.name = "js2";
+    console.log(obj1);
+
+    let obj2 = {id:1, name:"js1"};
+    console.log(obj2);
+    let obj3;
+    console.log(typeof(obj3));
+
+    obj3 = new Object();
+    console.log(typeof(obj3));
+    
+    function Customer(id, name) {
+        // this.id = 1;
+        // this.name = 'js1';
+        this.id = id;
+        this.name = name;
+        //메소드
+        this.getName = function() {
+            return this.name;
+        }
+    }
+
+    // let obj4 = new Customer();
+    // console.log(obj4);
+
+    // let obj5 = new Customer();
+    // console.log(typeof(obj5));
+    // console.log(obj5);
+    // console.log(obj4 == obj5);
+
+    // let obj6 = new Customer(2, 'js2');
+    // console.log(obj6);
+
+    // console.log(obj6.getName());
+
+    // obj6.grade='vip';
+    // console.log(obj6);
+    // delete obj6.grade;/
+    // console.log(obj6);
+
+    // console.log(obj6.id);
+    // console.log(obj6.name);
+    
+    // console.log(Object.entries(obj6));
+    // console.log(Object.keys(obj6));
+    // console.log(Object.values(obj6));
+    // console.log('--------------------------------------');
+    //for~in
+    // for(let info in obj6) {
+    //     console.log(obj6[info]);
+    // }
+
+    // let Customer2 = (id, name) => {
+    //     this.id = id;
+    //     this.name = name
+    // };
+    // let obj7 = new Customer2(1,"js5");
+    // console.log(typeof(obj7));
+    function Cat(name, age) {
+        
+        this.name = name;
+        this.age = age;
+    }
+    let c = new Cat('js1', 3);
+    console.log(c);
+    console.log(c.toString());
+    console.log('----------------------');
+    //prototype
+    console.log(Cat.prototype);
+    console.log(Cat.prototype.toString);
+    console.log(Cat.prototype.construct);
+
+    console.log(Cat.prototype.name);
+    console.log(Cat.prototype.age);
+
+    Cat.prototype.age = 1;
+    console.log(Cat.prototype.age);
+    //object
+    console.log(Object.prototype);
+
+    //instanceof
+
+    console.log(Cat instanceof Object);
+    console.log(c instanceof Cat);
+    console.log(c instanceof Object);
+    console.log(Object instanceof Cat);
+    
+    //prototype을 통한 상속
+    function Person() {};
+        Person.prototype.getPlanet = function() {
+            console.log('Earth');
+        }
+    function Korean(region){
+        this.region = region;
+        this.getLoc = function(){
+            console.log(this.region);
+        }
+    }
+    Korean.prototype = Person.prototype;
+    const k2 = new Korean('Busan');
+    console.log(k2 instanceof Person);
+    k2.getPlanet();
+    k2.getLoc();
+    </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        arrow = () => {
+            console.log('arrow');
+        }
+
+        arrow();
+
+        // let add = function(num1, num2) {
+        //     return num1 + num2;
+        // }
+        
+        let add = (x,y) => {return x+y;}
+        console.log(add(1,2));
+        let printName = (name) => {
+            console.log(name);
+        }
+        printName('aa');
+
+        (function imdFunction1(){
+            console.log("즉시실행함수 1");
+        })();
+
+        (function imdFunction2(){
+            console.log("즉시실행함수 2")
+        })();
+
+        //매개변수가 있는 즉시 실행 함수
+        (function test(name = '주경야독'){
+            console.log(name);
+        })();
+
+        let name = '주경야독1';
+        (function test(name1){
+            console.log(name1);
+        })(name);
+        
+    </script>
+</body>
+</html>
