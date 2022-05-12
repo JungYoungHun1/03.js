@@ -226,3 +226,141 @@ function Person() {};
 배열 : [요소1, 요소2, ...];
 조회 : 배열명[index번호]
 배열의 크기 : 배열명.length = 데이터의 개수
+
+- push() 배열의 맨 끝에 순차적 요소 추가
+- unshift() 배열의 맨 앞에 순차적 요소 추가
+- pop() 맨 뒤의 요소를 삭제(실행시킨 순간 젤 뒤의 값을 리턴(가지고있음))
+- shift() 맨 앞의 요소를 삭제
+- splice(idx) 지정한 인덱스의 요소 포함 이후 요소 삭제
+- splice(idx1, n) 지정한 인덱스부터 n개 삭제
+- splice(idx1, n, x) 지정한 인덱스부터 n개를 x로 치환
+- slice(n, m) n번부터 m번 전까지 출력
+- indexOf() : 해당 요소의 인덱스 값 반환(없는 요소면 -1 반환)
+- find : 테스트 함수의 조건에 맞는 첫번째 요소 값을 반환
+- findIndex : 테스트 함수의 조건에 맞는 첫번째 요소의 인덱스 번호를 반환
+- for ~ of : 순차적으로 내부 요소에 접근할 수 있는 이터러블(배열을 일반화)한 객체만 사용가능
+
+- 유사배열 : 배열처럼 인덱스와 같이 길이 프로퍼티가 존재 / 배열은 아님
+        // Array.from() : 유사 배열을 받아서 진짜 배열로 만들어줌
+- join
+        console.log(arr4.join());
+        console.log(arr4.join(' '));
+        console.log(arr4.join(' - '));
+
+- foreach() : 배열만 사용가능한 메소드(유사배열 x)
+let avengers = ["스파이더맨", "호크아이", "헐크"];
+    
+        avengers.forEach((avenger) => {
+            console.log(avenger);
+        })
+
+        avengers.forEach(printName);
+        function printName(avenger){
+            console.log(avenger);
+        }
+- map - 주어진 조건으로 새로운 배열을 만듬
+let arr5 = [1, 2, 3, 4, 5];
+        let expo = [];
+
+        arr5.map((n)=> expo.push(n**2));
+        let expo2 = arr5.map((n) => n**2);
+
+- for문, foreach문 제곱
+// for (let index = 0; index < arr5.length; index++) {
+        //     arr5[index] *= arr5[index];
+        //     console.log(arr5[index]);
+        //     expo.push(arr5[index]);
+        // }
+        // arr5.forEach((x) => {
+        //     expo.push(x**2);
+        // })
+        // console.log(expo);
+
+        const info = [
+    {
+        id: 1,
+        name: "js"
+    },
+    {
+        id: 2,
+        name: "javascript"
+    }
+        ];
+
+        const names = info.map(info => info.name);
+        console.log(names);
+        
+- filter(배열로 출력)
+    console.log(todos);
+    console.log(todos.find(todo => todo.id ===3));
+    console.log(todos.find(todo => todo.done === false));
+    console.log(todos.filter(todo => todo.done === false));
+    console.log(todos.filter(todo => todo.done === true));
+
+- reduce()
+    let sumReduce = arr5.reduce((acc, current)=> {
+        return acc + current;
+    
+    }, 0);
+    // reduce
+    let reduce2 = arr5.reduce((acc, cur) => acc + cur);
+    console.log(reduce2);
+    console.log(sumReduce);
+
+[string](./step05_object/lab03_string.html)
+
+- length : 문자열 길이
+- charAt(n) : n번째 문자 반환
+- substring(str1.substring(5,9)) - 5번째부터 9번째까지 출력
+- replace() - 문자 변환
+- split() : 기준에 따라 문자열을 분할하여 배열로 반환
+- concat() : 문자열을 결합
+
+[number](./step05_object/lab04_number.html)
+- number() - 문자열을 숫자로 바꿔줌
+- parseInt() : 소수점 버리고 정수로
+        -> 문자열을 숫자타입으로 바꿔줌 
+
+- parseFloat() : 문자열을 숫자형태로
+
+- Number.toFixed() : 지정한 소수점 자리까지만 남김(자동 반올림)
+
+[date](./step05_object/lab05_date.html)
+
+- Date : 현재 날짜 및 시간을 참조하는 객체(월은 0부터 시작해서 +1 해줘야 함)
+        let dateObj = new Date();
+        console.log(dateObj.getFullYear());
+        console.log(dateObj.getDate());
+        console.log(dateObj.getDay()); - 0 = 일요일
+        console.log(dateObj.getHours());
+        console.log(dateObj.getMonth()+1);
+
+    - Date.parse(str) : 문자열에서 날짜 타입으로 변경
+    단 형식은 YYYY-MM-DDTHH:mm:ss
+    console.log(new Date(Date.parse("2020-06-01T09:00:00")));
+
+[dom](./step06_dom/lab01_dom.html)
+
+DOM 문서 객체 모델(Document Object Model)
+: 웹 페이지의 모든 컨텐츠를 객체로 표현하는 모델
+DOM 트리 : DOM을 계층적으로 표현, 계층적인 단위 Node
+
+- Document 객체
+: 웹 페이지 자체, 따라서 모든 HTML요소에 접근하기 위해서는 Document 객체로부터 시작
+
+- DOM Selection (선택) : 
+     DOC
+
+- 노드를 통한 접근
+    - 종류
+        - 문서 노드
+        - 요소 노드
+        - 속성 노드
+        - 텍스트 노드
+        - 주석 노드
+    - 관계성
+        - 조상(상위)/부모
+        - 자손(하위)/자식
+        - 형제 : nextSibiling, previousSilibing
+
+        image.png
