@@ -363,4 +363,53 @@ DOM 트리 : DOM을 계층적으로 표현, 계층적인 단위 Node
         - 자손(하위)/자식
         - 형제 : nextSibiling, previousSilibing
 
-        image.png
+     - 노드로 접근하는건 부적절
+
+- DOM Manipulation(조작)
+
+- BOM Browser Object Model
+ 자바스크립트를 이용하여 브라우저를 제어 가능하도록 설정하는 객체 모델
+
+ - setTimeout : 일정 시간 후에 함수를 실행하는 메소드
+
+ var header = document.createElement('h2'); 
+document 객체에 접근해서 <h2> 태그를 생성
+
+var textNode = document.createTextNode('Hello DOM');
+그 다음은 document 객체에 접근해서 TextNode를 생성하고 'Hello DOM'이라는 스트링
+
+header.appendChild(textNode);
+위에서 생성한 <h2> 태그에 자식노드를 추가 그 추가되는 자식노드는 아까 위에서 생성한 Text Node
+
+document.body.appendChild(header);
+
+
+[event](./step06_dom/lab02_event.html)
+
+- event
+1. 인라인 방식
+const describeElem = document.getElementById('describe');
+            // function clickFunc() {
+            //     describeElem.innerHTML = '계좌 조회 서비스';
+            // }
+
+            <!-- <button id="check" class="tab" name="checkName" onclick="clickFunc()">조회</button> -->
+
+2. 프로퍼티 방식
+const checkElem = document.getElementById('check');
+
+            checkElem.onclick = function clickFunc() {
+                describeElem.innerHTML = '계좌 조회 서비스';
+            };
+
+3. 이벤트 헨들러 방식
+checkElem.addEventListener('click', () => {
+                describeElem.innerHTML = '계좌 조회 서비스'
+                })
+
+
+mouse event : click, dblclick, mouseover.....
+focus event : focus, blur, focusin.....
+keyboard event : keydown, keypress, keyup
+
+

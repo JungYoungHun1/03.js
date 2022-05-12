@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+    <div id="dom">
+        <h1>Plus-Minus</h1>
+        <div id="result">0</div>
+        <button id="btn-plus" class="btn" name="plus-button">+1</button>
+        <button id="btn-minus" class="btn">-1</button>
+        
+    </div>
+    <div>
+        <input type="number" id="num1">
+        <input type="number" id="num2">
+        <div>
+            <button id="plus">+</button>
+            <button id="minus">-</button>
+            <!-- <button id="resultbtn">=</button> -->
+        </div>
+        <div id="result2"></div>
+        <div id="result3"></div>
+        <div id="result4"></div>
+        
+        
+
+    </div>
+    <script>
+        // const resultElem = document.getElementById('result');
+        // const plusElem = document.getElementById('btn-plus');
+        // const minusElem = document.getElementById('btn-minus');
+        // var sum = 0;
+
+        // plusElem.addEventListener('click', () => {
+        //     sum += 1;
+        //     resultElem.innerHTML = sum;
+        // })
+
+        // minusElem.addEventListener('click', () => {
+        //     sum -= 1;
+        //     resultElem.innerHTML = sum;
+        // })
+
+        const num1Elem = document.getElementById('num1');
+        const num2Elem = document.getElementById('num2');
+        const plusElem = document.getElementById('plus');
+        const minusElem = document.getElementById('minus');
+        const resultElem = document.getElementById('result1');
+        const result2Elem = document.getElementById('result2');
+        const result3Elem = document.getElementById('result3');
+        const result4Elem = document.getElementById('result4');
+        var sum = 0;
+        num1Elem.addEventListener('keyup', (e) => {
+                result2Elem.innerHTML += e.key;
+
+        })
+       
+        num2Elem.addEventListener('keyup', (e) => {  
+                
+                result3Elem.innerHTML += e.key;
+      })
+    
+        plusElem.addEventListener('click', () => {
+            sum = parseInt(num1Elem.value) + parseInt(num2Elem.value)
+            result4Elem.innerHTML = sum;
+        })
+
+        minusElem.addEventListener('click', () => {
+            sum = parseInt(num1Elem.value) - parseInt(num2Elem.value)
+            result4Elem.innerHTML = sum;
+        })
+        
+        
+
+    </script>
+</body>
+</html>

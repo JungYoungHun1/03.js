@@ -5,6 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        .blue {
+            color: blue;
+        }
+    </style>
 </head>
 <body>
     <div id="dom">
@@ -20,11 +25,36 @@
         })
         // const btnElem = document.getElementsByClassName('btn');
         // console.log(btnElem);
-        const namebtn = document.getElementsByName('up-button')
-        console.log(namebtn);
+        //const namebtn = document.getElementsByName('up-button')
+        //console.log(namebtn);
 
-        const btnElem2 = document.querySelector('#dom');
-        console.log(btnElem2);
+        //const btnElem2 = document.querySelector('#dom');
+        //console.log(btnElem2);
+
+        //const divTags = document.getElementsByTagName("div");
+        //console.log(divTags);
+
+        // cosnole.log(document.childNodes[1].childNodes[2]);
+
+        //const hrElem = document.createElement('hr')
+        
+
+        const resultElement = document.getElementById('result');
+
+        resultElement.innerHTML = 'innerHTML';
+        resultElement.innerText = 'innerText';
+        const hrElement = document.createElement('hr');
+
+        resultElement.appendChild(hrElement);
+
+
+        //resultElement.style.fontSize = '40px';
+        resultElement.classList.add('blue');
+
+        setTimeout(print, 1000);
+        function print() {
+            console.log('print setTimeout')
+        }
     </script>
 </body>
 </html>
