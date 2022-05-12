@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // number() - 문자열을 숫자로 바꿔줌
+        let strNum = "10";
+        let strNaN = "Ten";
+        console.log(Number(strNum));
+        console.log(Number(strNaN));
+        console.log(typeof Number(strNaN));
+
+        //parseInt() : 소수점 버리고 정수로
+        // -> 문자열을 숫자타입으로 바꿔줌 
+        console.log(parseInt(3.14));
+        console.log(parseInt(3.54));
+        console.log(parseInt("3"));
+
+        //parseFloat() : 문자열을 숫자형태로
+        console.log(parseFloat('6.89'));
+
+        //Number.toFixed() : 지정한 소수점 자리까지만 남김
+        let fixedNum = 142.2427224;
+        console.log(fixedNum.toFixed(3));
+    </script>
+</body>
+</html>

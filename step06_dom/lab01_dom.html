@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="dom">
+        <h1>Title</h1>
+        <div id="result">result</div>
+        <button id="btn-up" class="btn" name="up-button">up</button>
+        <button id="btn-down" class="btn">down</button>
+    </div>
+    <script>
+        let btnupElem = document.getElementById('btn-up');
+        btnupElem.addEventListener('click', () => {
+            alert(1);
+        })
+        // const btnElem = document.getElementsByClassName('btn');
+        // console.log(btnElem);
+        const namebtn = document.getElementsByName('up-button')
+        console.log(namebtn);
+
+        const btnElem2 = document.querySelector('#dom');
+        console.log(btnElem2);
+    </script>
+</body>
+</html>

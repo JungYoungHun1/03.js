@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+    <script>
+    function Person() {};
+        Person.prototype.getPlanet = function() {
+            console.log('Earth');
+        }
+    function Korean(region){
+        this.region = region;
+        this.getLoc = function(){
+            console.log(this.region);
+        }
+    }
+    const k = new Korean('pusan');
+
+    Korean.prototype = Person.prototype;
+    console.log(k instanceof Korean); 
+    console.log(k instanceof Person);
+    const k2 = new Korean('pusan');
+    console.log(k2 instanceof Korean); 
+    console.log(k2 instanceof Person);
+
+
+    
+</script>
+
+</body>
+</html>

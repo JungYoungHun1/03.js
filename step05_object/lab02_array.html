@@ -8,18 +8,202 @@
 </head>
 <body>
     <script>
-        let arr1 = [1,2,3,4,5];
-        console.log(arr1);
-        console.log(typeof(arr1));
-        let arr2 = new Array(1, 2, 3, 4, 5);
-        console.log(arr2);
-        console.log(arr2[0]);
-        console.log(arr1.length);
-        console.log(arr1[arr1.length-1]);
-        console.log('----------------------------------');
-        for (let index = 0; index < arr1.length; index++) {
-            console.log(arr1[index]);
+        // let arr1 = [1,2,3,4,5];
+        // console.log(arr1);
+        // console.log(typeof(arr1));
+        // let arr2 = new Array(1, 2, 3, 4, 5);
+        // console.log(arr2);
+        // console.log(arr2[0]);
+        // console.log(arr1.length);
+        // console.log(arr1[arr1.length-1]);
+        // console.log('----------------------------------');
+        // for (let index = 0; index < arr1.length; index++) {
+        //     console.log(arr1[index]);
+        // }
+
+        let arr3 = [1,2,3,4,5];
+        //push() 배열의 맨 끝에 순차적 요소 추가
+        // arr3.push(6,7,8);
+        // console.log(arr3);
+
+        //unshift() 배열의 맨 앞에 순차적 요소 추가
+        // arr3.unshift(0, 11, 22);
+        // console.log(arr3);
+
+        //요소 삭제
+        //pop() 맨 뒤의 요소를 삭제
+        // arr3.pop();
+        // console.log(arr3);
+
+        //shift() 맨 앞의 요소를 삭제
+        // arr3.shift();
+        // console.log(arr3);
+
+        //splice()
+        // console.log(arr3.splice(1));
+        // console.log(arr3);
+
+        //splicie(idx1, idx2)
+        // console.log(arr3);
+        // arr3.splice(1, 2);
+        // console.log(arr3);
+        //splice(idx1, n, x)
+        // console.log(arr3);
+        // arr3.splice(1, 2, 0, 0)
+        // console.log(arr3);
+
+        //slice
+        // console.log(arr3);
+        // console.log(arr3.slice(0,3));
+        // console.log(arr3);
+
+        //indexOf() : 해당 요소의 인덱스 값 반환(없는 요소면 -1 반환)
+        // console.log(arr3);
+        // console.log(arr3.indexOf(6));
+
+        //find : 테스트 함수의 조건에 맞는 첫번째 요소 값을 반환
+        //findIndex : 테스트 함수의 조건에 맞는 첫번째 요소의 인덱스 값을 반환
+        // console.log(arr3);
+
+        //find
+        // let even = arr3.findid((value) => (value%2 == 0));
+        // console.log(even);
+
+        let cats = [
+            {name : '마일로', age : 10},
+            {name : '초코', age : 8},
+            {name : '포니', age : 12},
+            {name : '포우', age : 5}
+        ]
+        // console.log(cats);
+        //나이가 10살 미만인 고양이만 검색
+        // let under10 = cats.find((cat) => (cat.age<10));
+        // let under10 = cats.filter((cat) => (cat.age<10));
+        // console.log(under10);
+        
+        //for~of
+        // let cities = ["Busan", "Seoul", "Paris", "Jip"];
+        // for (let city of cities){
+        //     console.log(city);
+        // }
+
+        let likeArray = {
+            0 : '오늘 점심',
+            1 : '뭐먹지',
+            length : 2
         }
-    </script>
+        // console.log(typeOf(likeArray));
+
+        // for(let element of likeArray){
+        //     console.log(element);
+        // }
+
+        // Array.from() : 유사 배열을 받아서 진짜 배열로 만들어줌
+
+        let arr4 = Array.from(likeArray);
+        console.log(arr4);
+
+        for(let element of arr4){
+            console.log(element);
+        }
+        // join
+        console.log(arr4.join());
+        console.log(arr4.join(' '));
+        console.log(arr4.join(' - '));
+
+        //foreach()
+        let avengers = ["스파이더맨", "호크아이", "헐크"];
+    
+        avengers.forEach((avenger) => {
+            console.log(avenger);
+        })
+        avengers.forEach(printName);
+        function printName(avenger){
+            console.log(avenger);
+        }
+        avengers.forEach(function printName(avengers){
+            console.log(avengers);
+        })
+
+        
+        //map
+
+        let arr5 = [1, 2, 3, 4, 5];
+        let expo = [];
+
+        arr5.map((n)=> expo.push(n**2));
+        let expo2 = arr5.map((n) => n**2);
+        console.log(expo2);
+        console.log(expo);
+        //arr5 요소들을 제곱하여 expo 라고 하는 배열에 담아줌
+        // for (let index = 0; index < arr5.length; index++) {
+        //     arr5[index] *= arr5[index];
+        //     console.log(arr5[index]);
+        //     expo.push(arr5[index]);
+        // }
+        // arr5.forEach((x) => {
+        //     expo.push(x**2);
+        // })
+        // console.log(expo);
+
+    //     const info = [
+    // {
+    //     id: 1,
+    //     name: "js"
+    // },
+    // {
+    //     id: 2,
+    //     name: "javascript"
+    // }
+    //     ];
+
+    //     const names = info.map(info => info.name);
+    //     console.log(names);
+        
+        // filter()
+        const todos = [
+    {
+        id: 1,
+        todo: '자격증공부',
+        done: true
+    },
+    {
+        id: 2,
+        todo: '프로젝트',
+        done: false
+    },
+    {
+        id: 3,
+        todo: '운동',
+        done: false
+    }
+];
+    console.log(todos);
+    console.log(todos.find(todo => todo.id ===3));
+    console.log(todos.find(todo => todo.done === false));
+    console.log(todos.filter(todo => todo.done === false));
+    console.log(todos.filter(todo => todo.done === true));
+
+    //reduce()
+    console.log(arr5);
+
+    
+    // arr5 총합
+    let sum = 0;
+    arr5.forEach(num =>{
+        sum += num;
+    })
+    console.log(sum);
+
+    //
+    let sumReduce = arr5.reduce((acc, current)=> {
+        return acc + current;
+    
+    }, 0);
+    // reduce
+    let reduce2 = arr5.reduce((acc, cur) => acc + cur);
+    console.log(reduce2);
+    console.log(sumReduce);
+</script>
 </body>
 </html>

@@ -110,7 +110,10 @@
             console.log(this.region);
         }
     }
+    const k = new Korean('pusan');
+
     Korean.prototype = Person.prototype;
+    console.log(k instanceof Korean);
     const k2 = new Korean('Busan');
     console.log(k2 instanceof Person);
     k2.getPlanet();
