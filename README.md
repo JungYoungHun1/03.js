@@ -412,4 +412,313 @@ mouse event : click, dblclick, mouseover.....
 focus event : focus, blur, focusin.....
 keyboard event : keydown, keypress, keyup
 
+- 이벤트 흐름
+: 이벤트가 발생하는 html 요소는 계층적인 구조로 되어 있기 때문에 주변 요소에 영향을 미침
+
+- 버블링
+: 자식요소의 이벤트가 일어났을때 부모요소까지 이벤트가 실행되는 현상
+- 캡처링
+: 부모요소의 이벤트가 일어났을때 자식요소까지 이벤트가 실행되는 현상
+(형제요소에는 버블링, 캡쳐링이 영향 없음)
+
+[apply](./step07_apply/lab01_apply.html)
+
+- 삼항 연산자
+: 조건 ? true : false
+
+- Truthy / Falsy
+falsy = false처럼 행동하는 값
+
+// falsy : false처럼 행동하는 값, 이외 모든값들은 truthy
+        console.log(!undefined)
+        console.log(!false)
+        console.log(!null);
+        console.log(!0);
+        console.log(!'');
+
+//불린 값이 아니어도 truthy 한 값이기 때문에 사용 가능
+- &&
+        console.log(true && 'js');
+        console.log('java' && 'js'); // 앞에 있는 java는 true로 인식해서 js가 출력
+// 앞 조건이 true인 경우에 뒷 조건이 출력되게 코드를 짤 경우
+
+- ||
+// or 연산은 모두 참이면 앞의 내용이 출력
+        // 앞에있는 객체의 결과가 false인 경우 뒤에 있는 값을 출력값을 지정하고자 할때
+
+//함수의 파라미터 기본값을 초기화 할 수 있다.
+        let cal = (r=1) => {
+            // let radius = r || 1;
+            
+            return Math.PI * r**2;
+            
+        }
+        console.log(cal());
+
+               console.log(calCircleArea());
+        //함수의 파라미터 기본값을 초기화 할 수 있다.
+        let cal = (r) => {
+            // let radius = r || 1;
+            r = !r || r;
+            return Math.PI * r**2;
+            
+        }
+        console.log(cal(2));
+
+        // 조건문 활용
+        // 파라미터 vs 인자
+        // 파라미터 : 함수를 정의할 때 사용하는 소괄호 안에 있는 변수
+        // 인자 : 함수를 호출할 때 사용하는 함수 내에 사용되는 변수
+        //checkMonth() : (ver1) month가 존재하는지 여부 판단
+        // function checkMonth(month) {
+        //     if(month === 1 || month === 2){
+        //         return true;
+        //     }
+        // }
+        // return (month === 1 || month === 2);
+
+        // let months = [1, 2, 3, 4, 5];
+        // return months.includes(month);
+
+        function getMonth(r){
+            // switch(month){
+            //     case 1 : return '1월';
+            //     case 2 : return '2월';
+            //     case 3 : return '3월';
+            // }
+            
+            let months = {
+            1: '1월',
+            2: '2월',
+            3: '3월'
+        }
+
+
+
+
+            return months[r] || '없음';
+        }
+        console.log(getMonth(1));
+       
+        // 비구조화 문법
+        // let obj = {x:1, y:2}
+
+        // let { x, y } = obj;
+        // console.log(x);
+        // console.log(y);
+
+         
+        
+
+
+// obj = {x:1};
+
+//         function printValue({x, y}){
+//             console.log(x);
+//             console.log(y || 2);
+//         };
+//         printValue(obj);
+
+    // 배열
+    let arr2 = [1,2];
+
+    let [one, two] = arr2;
+    console.log(one); 
+    console.log(two); 
+
+   // 객체 깊은 데이터
+    // let deepObj = {
+    //     info: {
+    //         private: {
+    //             name: 'js',
+    //             age: 17,
+    //             hobbies: ['prgramming', 'studying']
+    //         }
+    //     },
+    //     purpose: '비구조화 테스트'
+    // }
+    // let {name, age, hobbies} = deepObj.info.private;
+    // console.log(name, age, hobbies[1]);
+
+    // let {
+    //     info: {
+    //         private: {
+    //             name,
+    //             age,
+    //             hobbies: [first]
+    //         }
+    //     },
+    //     purpose
+    // } = deepObj2;
+    
+
+    // spread, rest
+    // spread : ...
+    let planet = {
+        continent: 'Asia'
+    };
+
+    let country = {
+        continent: 'Asia',
+        country_name: 'ROK'
+    };
+
+    let city = {
+        continent: 'Asia',
+        country_name: 'ROK',
+        region: 'Busan'
+    };
+
+        console.log(planet);
+        console.log(country);
+        console.log(city);
+
+        //배열 spread
+        let arr3 = [1, 2, 3];
+        let arr4 = [...arr3, 5];
+
+        console.log(arr4);
+
+        // rest : ...
+    // 객체
+    // let city = {
+    //     continent: 'Asia',
+    //     country_name: 'ROK',
+    //     region: 'Busan'
+    // };
+    // let { region, ...country} = city;
+    // console.log(region);
+    // console.log(country);
+        
+        function sum(...rest){
+            return rest.reduce((acc, cur) => (acc + cur), 0);
+        }
+        console.log(sum(1,2,3,4,5));
+
+        let arr5 = [1, 2, 3, 4, 5]
+        console.log(sum(...arr5));
+
+- spread : 객체의 요소들을 모아 새로운 객체를 만듬
+- rest : const [one, ...rest] = numbers;
+: one을 빼고 나머지 요소들을 모아 새로운 객체를 만듬
+
+
+- 상속
+1. 프로토타입 : 부모가 자식 메소드 접근 가능함
+// 상속
+// 1. 프로토타입
+function Parent(name, age) {
+    this.name = name;
+    this.age = age;
+};
+
+function Child(name, age) {
+    this.name = name;
+    this.age = age;
+};
+
+let p1 = new Parent("p1", 31);
+let c1 = new Child("c1", 1);
+
+
+
+
+
+
+// 2.
+function Parent(name, age) {
+    this.name = name;
+    this.age = age;
+};
+
+function Child(name, age) {
+    this.name = name;
+    this.age = age;
+};
+
+Child.prototype = {...Parent.prototype};
+
+Child.prototype.getName = function (){
+    console.log(this.name);
+}
+
+let p2 = new Parent("p2", 32);
+let c2 = new Child("c2", 2);
+
+
+
+// 3.
+function Parent(name, age) {
+    this.name = name;
+    this.age = age;
+};
+
+function Child(name, age) {
+    this.name = name;
+    this.age = age;
+};
+
+Child.prototype = Object.create(Parent.prototype);
+
+Child.prototype.getName = function (){
+    console.log(this.name);
+}
+
+Parent.prototype.getAge = function (){
+    console.log(this.age);
+}
+
+let p3 = new Parent("p3", 33);
+let c3 = new Child("c3", 3);
+
+c3.getName();
+c3.getAge();
+
+p3.getAge();
+// p3.getName(); // 에러
+
+// 체크
+console.log(p3.__proto__.constructor);
+console.log(c3.__proto__.constructor);
+c3.__proto__.constructor = Child;
+console.log(c3.__proto__.constructor);
+
+//4. class를 통한 상속
+class Parent {
+    constructor(name, age){
+        this.name = name;
+        this.age = age;
+    }
+    getAge() {
+        console.log(this.age);
+    }
+};
+class Child extends Parent {
+    constructor(name, age) {
+        super(name, age);
+    }
+    getName() {
+        console.log(this.name);
+    }
+};
+
+let p4 = new Parent("p4", 34);
+let c4 = new Child("c4", 4);
+
+// p4.getName();
+c4.getAge();
+
+[json](./step07_apply/lab02_json.html)
+
+- json : JavaScriptObjectNotation, 문자열의 형태로 데이터를 주고 받는 포맷
+: 내장 객체(js 운영되는 전역 접근 가능)
+: key:value 한 쌍으로 구성, "" 따옴표가 붙어 있는 상태
+: JSON.stringify : 객체를 json으로 변경
+: 객체, 배열, 문자형, 숫자형, 불린, null
+: 함수, 심볼, undefined 적용 안됨
+
+- JSON.stringfy - 객체 -> 문자열 - 직렬화
+- JSON.parse - 문자열 -> 객체 - 역직렬화
+
+[asnyc](./step07_apply/lab03_async.html)
 

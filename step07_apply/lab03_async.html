@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 동기(synchronous) : 요청 결과 응답 후 다음 동작이 실행되는 방식
+        console.log(1);
+        setTimeout(() => {
+            console.log(2);
+        }, 1000);
+        console.log(3);
+
+        // 비동기 : 요청 결과 응답과 별개로 다음 동작이 실행되는 방식
+        // - 서버로부터 데이터세팅, 문제 발생시 별도로 실행되어야 하는 경우
+
+        // 콜백 함수 callback Function
+        // 함수의 매개변수로 전달되는 함수 --> 결과적으로 콜백함수는 전달 받은 함수
+        function callback(callback){
+            setTimeout(() => {
+               callback(); 
+            }, 1000);
+        };
+
+        //promise
+        //전역객체(new x)
+        // console.log(Promise);
+
+        //문법
+        //new 연산자로 프로미스 객체 생성 가능
+        // 객체 생성자 실행자 함수를 인자로 받아 실행
+        // 
+        new Promise((resolve, reject)=>{
+
+});
+// 대기(pending) : 프로미스 객체가 생성되어 대기 중인 상태
+
+// 이행(fulfilled) : resolve()를 실행시켰을 때의 상태
+new Promise((resolve, reject)=>{
+    resolve()
+});
+// 거부(rejected) : reject()를 실행시켰을 때의 상태
+new Promise((resolve, reject)=>{
+    reject()
+});
+
+        // 1초후 실행함수
+        let promiseFunction = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve();
+            }, 1000)
+        });
+
+        console.log(promiseFunction);
+        promiseFunction.then();
+
+    </script>
+</body>
+</html>

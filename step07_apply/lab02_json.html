@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let obj1 = {name: "js"};
+        console.log(obj1);
+        console.log(obj1.name);
+
+        let obj2 = "{'name': 'js'}";
+        console.log(obj2); // - String
+        // console.log(obj2.name); - undefined
+
+        //Json.stringfy : 객체 -> 문자열 - 직렬화
+        let obj3 = JSON.stringify(obj1);
+        console.log(obj3);
+        console.log(typeof obj3);
+        // console.log(typeof obj3); // - string
+
+        // JSON.parse : 문자열 -> 객체 - 역직렬화
+        let obj4 = JSON.parse(obj3);
+        let obj5 = {"name" : "js"};
+        let obj6 = '{"name" : "js"}';
+        console.log(obj5);
+        console.log(obj6);
+        // let obj55 = JSON.parse(obj5); - 전체를 문자열로 만들어줘야 함
+        let obj66 = JSON.parse(obj6);
+        console.log(typeof obj66);
+
+        let obj8 = {};
+        obj8.info = 'data';
+        console.log(typeof obj8);
+        console.log(obj8);
+        let obj88 = (JSON.stringify(obj8));
+        console.log(typeof obj88);
+        console.log(obj88);
+        let obj888 = JSON.parse(obj88);
+        console.log(typeof obj888);
+        console.log(obj888);
+
+
+    </script>
+</body>
+</html>
