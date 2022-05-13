@@ -37,16 +37,16 @@
         new Promise((resolve, reject)=>{
 
 });
-// 대기(pending) : 프로미스 객체가 생성되어 대기 중인 상태
+    // 대기(pending) : 프로미스 객체가 생성되어 대기 중인 상태
 
-// 이행(fulfilled) : resolve()를 실행시켰을 때의 상태
-new Promise((resolve, reject)=>{
-    resolve()
-});
-// 거부(rejected) : reject()를 실행시켰을 때의 상태
-new Promise((resolve, reject)=>{
-    reject()
-});
+    // 이행(fulfilled) : resolve()를 실행시켰을 때의 상태
+    new Promise((resolve, reject)=>{
+        resolve()
+    });
+    // 거부(rejected) : reject()를 실행시켰을 때의 상태
+    new Promise((resolve, reject)=>{
+        reject()
+    });
 
         // 1초후 실행함수
         let promiseFunction = new Promise((resolve, reject) => {
