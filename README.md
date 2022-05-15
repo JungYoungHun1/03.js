@@ -771,3 +771,167 @@ c4.getAge();
 
         console.log(promiseFunction);
         promiseFunction.then();
+
+
+        개선된 프로미스 사용 방법 : 함수 내부에 반환 값으로 프로미스를 사용
+
+
+        //Promise 선언
+        var _promise = function (param) {
+
+            return new Promise(function (res, rej) {
+                // 비동기를 표현하기 위해 setTimeout 함수를 사용 
+                window.setTimeout(function () {
+                    // 파라메터가 참이면, 
+                    if (param) {
+                        // 해결됨 
+                        // reject(Error("실패!!"));
+
+                        res("해결 완료");
+                    }
+                    // 파라메터가 거짓이면, 
+                    else {
+                        // 실패 
+                        // reject(Error("실패!!"));
+                        // resolve("해결 완료");
+                        rej(Error("ㅋㅋ"));
+
+                    }
+                }, 1000);
+            });
+        };
+        //Promise 실행
+        _promise(false)
+            .then((text) => {
+                // 성공시
+                console.log(text);
+
+            }).catch((error) => {
+                // 실패시 
+                console.error(error);
+            })
+
+
+
+- promise try/catch : 에러 처리 명령문
+
+.then이 여러개 있으면 밑이 언디파인드 - 앞에 사용된 then의 영향을 받기 때문
+num = 3;
+.then((num) => num *2)
+.then((num) => num *3)
+.then((num) => console.log(num))
+= 18
+
+- Promise.all()
+
+// Promise.all( [promiseAll(1000), promiseAll(2000), promiseAll(3000)] )
+//     .then((time) => {
+//         console.log(time);
+//         console.log('Promise all 실행 : 모든 프로미스가 fullfiled가 된 경우 한 번에 실행');
+//     })
+
+Promise.race( [promiseAll(1000), promiseAll(2000), promiseAll(3000)] )
+    .then((time) => {
+        console.log(time);
+        console.log('Promise race 실행 : 가장 빠른 프로미스가 fullfiled가 된 경우 실행');
+    })
+
+    동시 실행 - 1초 후 출력
+
+- Async function :
+
+
+ async function fetchData() {
+            // return new Promise((res, rej) => {
+                
+            //     res('data');
+            // }); - async 선언으로 promise 선언 필요없음
+            return 'data';
+        }
+        let data = fetchData();
+        data.then((data) => {
+            console.log(data);
+        })
+
+// await = 프로미스의 결과를 기다리기 위해 사용
+        function loadData(time) {
+            return new Promise((res, rej) => {
+                setTimeout(() => {
+                    res();
+                }, time);
+            });
+        };
+        // error - await은 반드시 async 내부에서만 사용 가능
+        // let loading = await loadData(2000);
+        // loading
+        //     .then(() => {
+        //         console.log('로드 데이터');
+        //     })
+        // 수정
+        async function useAwait(){
+            // let loading = await loadData(2000);
+            // console.log(loading);
+            try {
+                let loading = await loadData(2000);
+                console.log(loading);
+            } catch(e){
+                console.log(e);
+            }
+        }
+        useAwait();
+
+        async function f() {
+
+        let promise = new Promise((resolve, reject) => {
+            setTimeout(() => resolve("완료!"), 2000)
+            });
+            let result2 = promise;
+            console.log(result2);
+
+            let result = await promise; // 프라미스가 이행될 때까지 기다림 (*)
+            console.log(result); // "완료!"
+            }
+
+            f();
+
+- HTTP 구조
+1. Start Line
+HTTP 메소드, Request(요청) 타겟 (= 목표 주소), HTTP 버전, HTTP 상태 ...
+	HTTP 메소드 종류: GET(데이터 요청), POST(데이터 추가), PUT(데이터 수정), DELETE(데이터 삭제) : https://developer.mozilla.org/ko/docs/Web/HTTP/Methods
+	HTTP 상태(1xx, 2xx, 3xx, 4xx, 5xx) : https://developer.mozilla.org/ko/docs/Web/HTTP/Status
+
+2. Header (key : value)
+Date(현재 시간), Content-type(body부분의 미디어 타입, ex.text/html, application/json, ...),
+Content-lenght(컨텐츠 길이), Host(서버 호스트 이름과 포트번호)
+Authorization(인증 토큰), Cookie(쿠키), Accept(미디어 타입 종류)
+
+3. Body
+실제 데이터(Request - 전송하는 데이터, Response - 반환하는 데이터)
+전송 데이터 혹은 반환 데이터가 없다면 - Body는 비어 있을 수 있음
+
+- XMLHTTPRequest (XHR) - 요청을 해줄때 주고받는 객체, 서버와 비동기로 상호작용하기 위해 사용
+
+function ajaxTest() {
+            let xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function () {
+                if (this.readyState === 4 && this.status === 200) {
+                    // console.log(this.response);
+                    let responseObj = JSON.parse(this.response);
+                    // console.log(responseObj);
+                    responseObj.forEach(element => {
+                        if(element.id == 3){
+                            console.log(element.name);
+                            
+                            let testElem = document.getElementById('test');
+                            testElem.innerHTML = element.name; 
+                        }
+                    });
+                    
+                    
+                }
+            }
+            xhr.open("GET", "https://jsonplaceholder.typicode.com/users");
+            xhr.send();
+        }
+        ajaxTest();
+

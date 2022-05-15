@@ -6,39 +6,200 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
 </head>
 
 <body>
     <script>
         //Promise 선언
-        var _promise = function (param) {
+        //         var _promise = function (param) {
 
-            return new Promise(function (resolve, reject) {
-                // 비동기를 표현하기 위해 setTimeout 함수를 사용 
-                window.setTimeout(function () {
-                    // 파라메터가 참이면, 
-                    if (param) {
-                        // 해결됨 
-                        resolve("해결 완료");
-                    }
-                    // 파라메터가 거짓이면, 
-                    else {
-                        // 실패 
-                        reject(Error("실패!!"));
-                    }
-                }, 3000);
-            });
-        };
-        //Promise 실행
-        _promise(true)
-            .then(function (text) {
-                // 성공시
-                console.log(text);
-            }, function (error) {
-                // 실패시 
-                console.error(error);
-            });
+        //             return new Promise(function (res, rej) {
+        //                 // 비동기를 표현하기 위해 setTimeout 함수를 사용 
+        //                 window.setTimeout(function () {
+        //                     // 파라메터가 참이면, 
+        //                     if (param) {
+        //                         // 해결됨 
+        //                         // reject(Error("실패!!"));
+
+        //                         res(3);
+        //                     }
+        //                     // 파라메터가 거짓이면, 
+        //                     else {
+        //                         // 실패 
+        //                         // reject(Error("실패!!"));
+        //                         // resolve("해결 완료");
+        //                         rej(Error("ㅋㅋ"));
+
+        //                     }
+        //                 }, 2000);
+        //             });
+        //         };
+        //         console.log('hihihi');
+        //         //Promise 실행
+        //         _promise(false)
+        //             .then((text) => {
+        //                 // 성공시
+        //                 return text*3;
+        //             }).then((text) => {
+        //                 // 성공시
+        //                 console.log(text);
+        //             })
+        //             .catch((error) => {
+        //                 // 실패시 
+        //                 console.log(error);
+        //             })
+        //             .then((text) => {
+        //                 // 성공시
+        //                 console.log(text);
+        //             }).then((text) => {
+        //                 // 성공시
+        //                 console.log('dd');
+
+        //             })
+
+        // // Promise.all() / Promise.race()
+        // function promiseAll(time) {
+        //     return new Promise((resolve, reject) => {
+        //         setTimeout(() => {
+        //             // resolve();
+        //             resolve(time);
+        //         }, time);
+        //     });
+        // };
+
+        // Promise.all( [promiseAll(1000), promiseAll(2000), promiseAll(3000)] )
+        //     .then((time) => {
+        //         console.log(time);
+        //         console.log('Promise all 실행 : 모든 프로미스가 fullfiled가 된 경우 한 번에 실행');
+        //     })
+
+        // Promise.race( [promiseAll(1000), promiseAll(2000), promiseAll(3000)] )
+        //     .then((time) => {
+        //         console.log(time);
+        //         console.log('Promise race 실행 : 가장 빠른 프로미스가 fullfiled가 된 경우 실행');
+        //     })
+
+        // async function fetchData() {
+        //         // return new Promise((res, rej) => {
+
+        //         //     res('data');
+        //         // });
+        //         return 'data';
+        //     }
+        //     let data = fetchData();
+        //     data.then((data) => {
+        //         console.log(data);
+        //     })
+
+        // await = 프로미스의 결과를 기다리기 위해 사용
+        // function loadData(time) {
+        //     return new Promise((res, rej) => {
+        //         setTimeout(() => {
+        //             res();
+        //         }, time);
+        //     });
+        // };
+        // // error - await은 반드시 async 내부에서만 사용 가능
+        // // let loading = await loadData(2000);
+        // // loading
+        // //     .then(() => {
+        // //         console.log('로드 데이터');
+        // //     })
+        // // 수정
+        // async function useAwait(){
+        //     // let loading = await loadData(2000);
+        //     // console.log(loading);
+        //     try {
+        //         let loading = await loadData(2000);
+        //         console.log(loading);
+        //     } catch(e){
+        //         console.log(e);
+        //     }
+        // }
+        // useAwait();
+
+        // async function f() {
+
+        // let promise = new Promise((resolve, reject) => {
+        //     setTimeout(() => resolve("완료!"), 2000)
+        //     });
+        //     let result2 = promise;
+        //     console.log(result2);
+
+        //     let result = await promise; // 프라미스가 이행될 때까지 기다림 (*)
+        //     console.log(result); // "완료!"
+        //     }
+
+        //     f();
+
+        //XMLHTTPRequest (XHR) - 요청을 해줄때 주고받는 객체
+
+        // function ajaxTest() {
+        //     let xhr = new XMLHttpRequest();
+        //     xhr.onreadystatechange = function () {
+        //         if (this.readyState === 4 && this.status === 200) {
+        //             // console.log(this.response);
+        //             let responseObj = JSON.parse(this.response);
+        //             console.log(responseObj);
+        //             // responseObj.forEach(element => {
+        //             //     if(element.id == 3){
+        //             //         console.log(element.name);
+                            
+        //             //         let testElem = document.getElementById('test');
+        //             //         testElem.innerHTML = element.name; 
+
+
+        //                          let divCreate = document.createElement('div');
+        //                         let divtext = document.createTextNode(element.name);
+        //                         divCreate.appendChild(divtext);
+        //                         document.body.appendChild(divCreate);
+        //             //     }
+        //             // });
+                    
+                    
+        //         }
+        //     }
+        //     xhr.open("GET", "https://jsonplaceholder.typicode.com/users?id=3");
+        //     xhr.send();
+        // }
+        // ajaxTest();
+
+        //axios : 비동기 통신을 위해 사용되는 라이브러리(프로미스 기반)
+        // <script src="https://unpkg.com/axios/dist/axios.min.js"> - 세팅해줘야함
+            
+            axios ({
+                method : "GET",
+                url : "https://jsonplaceholder.typicode.com/users?id=$"
+            }).then((response) => {
+                let divElem = document.getElementById('test');
+                console.log(response.data);
+                // response.data.forEach(element => {
+                //     if(element.id == 3){
+                //         divElem.innerHTML = element.name;
+                //     }
+                // });
+                for(let i = 0; i < response.data.length; i++) {
+                    // let divCreate = document.createElement('div');
+                    // let divtext = document.createTextNode(response.data[i].name);
+                    // divCreate.appendChild(divtext);
+                    // document.body.appendChild(divCreate);
+                    divElem.innerHTML += '<br>' + response.data[i].name;
+                   
+                    // divElem.innerText = "<br>";
+                }
+
+
+            })
+            
+            
+            
+            
     </script>
+    <div id="test"></div>
+    
 </body>
+
 
 </html>
