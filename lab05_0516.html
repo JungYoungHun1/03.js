@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+
+//https://axios-http.com/kr/docs/post_example
+//https://jsonplaceholder.typicode.com/posts
+
+
+// axios : 비동기 통신을 위해 사용되는 라이브러리(프로미스 기반)
+// "https://unpkg.com/axios/dist/axios.min.js" 세팅이 필수
+
+// axios({
+//     method: "GET",
+//     url: "https://jsonplaceholder.typicode.com/users"
+// }).then(response => console.log(response.data))
+
+// GET : 정보 요청
+// axios.get("https://jsonplaceholder.typicode.com/posts")
+//     .then(response => console.log(response.data))
+
+// POST : 정보 입력(생성)
+// axios.post("https://jsonplaceholder.typicode.com/posts", {
+//     userId: "js",
+//     // id: 101,
+//     title: "js-title",
+//     body: "js-body"
+// }).then((response) => {
+//     console.log(response);
+// })
+
+// PUT : 정보 수정 // PATCH : (입력한 정보만) 수정
+// axios.put("https://jsonplaceholder.typicode.com/posts/1", {
+//     title: "js-title-put",
+//     body: "js-body-put"
+// }).then((response)=>{
+//     console.log(response);
+// })
+
+// DELETE : 정보 삭제
+// axios.delete("https://jsonplaceholder.typicode.com/posts/1")
+//     .then((response) => {
+//         console.log(response);
+//     })
+
+// fetch : 자바스크립트 내장 라이브러리(프로미스 기반)
+fetch("https://jsonplaceholder.typicode.com/posts/1")
+
+ const postsURL = `https://jsonplaceholder.typicode.com/posts`;
+	 // PUT
+      fetch(`${postsURL}/1`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          title: "js-title-put",
+          body: "js-body-put",
+        }),
+      })
+        .then((res) => res.json())
+        .then((data) => console.log(data));
+
+      // PATCH
+      fetch(`${postsURL}/1`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          title: "js-title-put",
+          body: "js-body-put",
+        }),
+      })
+        .then((res) => res.json())
+        .then((data) => console.log(data));
+
+      // DELETE
+      fetch(`${postsURL}/1`, {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+      })
+        .then((res) => res.json())
+        .then((data) => console.log(data));
+
+// https://www.postman.com/
+// https://jsonplaceholder.typicode.com/posts/1
+
+
+// https://www.data.go.kr/
+// http://data.ex.co.kr/openapi/intro/introduce02
+// https://www.kobis.or.kr/kobisopenapi/homepg/main/main.do
+
+// 영화
+const baseURL = "http://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json"
+const keyValue = "e5a2bf0f13284f6fa868443e4cb62f1a"
+const targetDate = 20211101;
+
+// 일별 박스오피스에서
+// 2021년 11월 1일에 관객수가 2000 이상이고
+// 상영된 횟수가 홀수인 영화만 출력해주세요!
+axios.get(baseURL, {
+    params: {
+        key: keyValue,
+        targetDt: targetDate
+    }
+}).then(response => response.data)
+.then((data) => 
+    data.boxOfficeResult.dailyBoxOfficeList.filter(
+        (el) => (el.audiCnt >= 2000) && (el.showCnt % 2 === 1)
+    )
+).then(result => console.log(result))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>
